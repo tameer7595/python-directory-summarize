@@ -1,0 +1,9 @@
+directory name : C:\Users\tamee\PycharmProjects\directoryInfo\newDir
+directory size : 4096
+num of file : 3
+num of sub directory : 1
+sub directory info :
+directory name : C:\Users\tamee\PycharmProjects\directoryInfo\newDir\pictures
+directory size : 0
+num of file : 3
+num of sub directory : 0
