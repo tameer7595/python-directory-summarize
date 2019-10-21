@@ -3,6 +3,11 @@ from os import walk
 
 
 def summarizeDirectory(p):
+
+    #check if directory size > 0
+    if os.path.getsize(p) == 0:
+        raise ValueError("AN empty directory!!!")
+
     with open("dirInfo.txt","a")as fp:
         fp.write(f"directory name : {os.path.splitext(p)[0]}\n")
         fp.write(f"directory size : {os.path.getsize(p)}\n")
@@ -12,10 +17,13 @@ def summarizeDirectory(p):
         if numOfSub != 0 :
             fp.write((f'sub directory info :\n'))
 
+    # print sub directory information
+    filenames = os.listdir(p)
+    for name in filenames:
+        name = f'{p}\\{name}'
+        if os.path.isdir(name):
+            summarizeDirectory(name)
 
-
-def get_subDir_info(p):
-    summarizeDirectory(p)
 
 def get_num_of_file(path):
     count = 0
