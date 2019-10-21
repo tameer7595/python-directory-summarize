@@ -1,6 +1,6 @@
 import os
 from os import walk
-path = r'C:\Users\tamee\PycharmProjects\directoryInfo\newDir'
+
 
 def summarizeDirectory(p):
     with open("dirInfo.txt","a")as fp:
@@ -13,12 +13,14 @@ def summarizeDirectory(p):
             fp.write((f'sub directory info :\n'))
 
 
+
 def get_subDir_info(p):
     summarizeDirectory(p)
 
 def get_num_of_file(path):
     count = 0
-    for name in  os.listdir(path):
+    filenames = get_list_dir(path)
+    for name in filenames :
         name = f'{path}\\{name}'
         if os.path.isfile(name):
             count+=1
@@ -26,18 +28,13 @@ def get_num_of_file(path):
 
 def get_num_of_subDir(path):
     count = 0
-    for name in  os.listdir(path):
+    filenames = get_list_dir(path)
+    for name in filenames :
         name = f'{path}\\{name}'
         if os.path.isdir(name):
             count+=1
     return count
 
-
-
-if __name__ == '__main__':
-
-    summarizeDirectory(path)
-    for name in os.listdir(path):
-        name = f'{path}\\{name}'
-        if os.path.isdir(name):
-            get_subDir_info(name)
+def get_list_dir(path):
+    filenames = os.listdir(path)
+    return filenames
